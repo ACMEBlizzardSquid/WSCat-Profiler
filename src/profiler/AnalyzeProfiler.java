@@ -8,6 +8,7 @@ public class AnalyzeProfiler {
 	public static final int REQUESTS  = 100;
 	
 	public static final String FILE   = "Hello";
+        public static int count = 0;
 	
 	public static void main(String[] args) {
 		WSCatService service = new WSCatService();
@@ -28,12 +29,15 @@ public class AnalyzeProfiler {
 	}
 	
 	public static long timeAnalyze(WSCat wscat, String file){
+            System.out.println("Training count " + count++);
 		long time = System.currentTimeMillis();
 		try {
 			wscat.analyzeFile(file);
 		} catch (IOException_Exception e) {
 		} catch (InterruptedException_Exception e) {
-		}
+		} catch (MarfcatNotTrainedException_Exception e) {
+                    
+                }
 		return System.currentTimeMillis() - time;
 	}
 
