@@ -16,6 +16,7 @@ public class AnalyzeProfiler {
 	public static final int REQUESTS  = 100;
 	public static final long TIMEOUT  = 20; // seconds
 	
+	public static int count = 0;
 	
 	public static void main(String[] args) throws IOException, InterruptedException {
 		WSCatService service = new WSCatService();
