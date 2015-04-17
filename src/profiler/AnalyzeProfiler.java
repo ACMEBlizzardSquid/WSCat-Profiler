@@ -12,11 +12,10 @@ import soen487.wscat.service.*;
 
 public class AnalyzeProfiler {
 	
-	public static final int TEST_RUNS = 10;
+	public static final int TEST_RUNS = 1;
 	public static final int REQUESTS  = 100;
 	public static final long TIMEOUT  = 20; // seconds
 	
-	public static final String FILE   = "Hello";
 	
 	public static void main(String[] args) throws IOException, InterruptedException {
 		WSCatService service = new WSCatService();
@@ -56,6 +55,9 @@ public class AnalyzeProfiler {
 			} catch (IOException_Exception e) {
 				e.printStackTrace();
 			} catch (InterruptedException_Exception e) {
+				e.printStackTrace();
+			} catch (MarfcatNotTrainedException_Exception e) {
+				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
