@@ -13,8 +13,8 @@ import soen487.wscat.service.*;
 public class AnalyzeProfiler {
 	
 	public static final int TEST_RUNS = 1;
-	public static final int REQUESTS  = 100;
-	public static final long TIMEOUT  = 20; // seconds
+	public static final int REQUESTS  = 1;
+	public static final long TIMEOUT  = 2000; // seconds
 	
 	public static int count = 0;
 	
@@ -58,7 +58,6 @@ public class AnalyzeProfiler {
 			} catch (InterruptedException_Exception e) {
 				e.printStackTrace();
 			} catch (MarfcatNotTrainedException_Exception e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
@@ -73,6 +72,7 @@ public class AnalyzeProfiler {
 		public Request(Semaphore sem, Runnable task) {
 			this.sem = sem;
 			this.task = task;
+			this.time = null;
 		}
 		
 		@Override
@@ -81,10 +81,11 @@ public class AnalyzeProfiler {
 				sem.acquire();
 				time = System.currentTimeMillis();
 				task.run();
-				time = System.currentTimeMillis() - time;
-				sem.release();
 			} catch (InterruptedException e) {
 				e.printStackTrace();
+			} finally {
+				time = System.currentTimeMillis() - time;
+				sem.release();
 			}
 		}
 		
