@@ -12,9 +12,9 @@ import soen487.wscat.service.*;
 
 public class AnalyzeProfiler {
 	
-	public static final int TEST_RUNS = 1;
-	public static final int REQUESTS  = 1;
-	public static final long TIMEOUT  = 2000; // seconds
+	public static final int TEST_RUNS = 10;
+	public static final int REQUESTS  = 100;
+	public static final long TIMEOUT  = 200; // seconds
 	
 	public static int count = 0;
 	
@@ -34,6 +34,7 @@ public class AnalyzeProfiler {
 			avg[i] = makeRequest(REQUESTS, task);
 		}
 		
+		Thread.sleep(1000);
 		// Printing
 		for (double avgTime : avg) {
 			System.out.println("AVG Time for "+REQUESTS+" requests : "+avgTime/1000.0+" s");
